@@ -376,7 +376,7 @@ class BaseCollection implements ArrayAccess, Countable, IteratorAggregate, JsonS
      * @param  mixed $offset 键名
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return array_key_exists($offset, $this->items);
     }
@@ -387,7 +387,7 @@ class BaseCollection implements ArrayAccess, Countable, IteratorAggregate, JsonS
      * @param  mixed $offset 键名
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
         return $this->items[$offset];
     }
@@ -399,7 +399,7 @@ class BaseCollection implements ArrayAccess, Countable, IteratorAggregate, JsonS
      * @param  mixed $value  值
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->items[] = $value;
@@ -414,7 +414,7 @@ class BaseCollection implements ArrayAccess, Countable, IteratorAggregate, JsonS
      * @param  mixed $offset 键名
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->items[$offset]);
     }
@@ -424,7 +424,7 @@ class BaseCollection implements ArrayAccess, Countable, IteratorAggregate, JsonS
      * @access public
      * @return int
      */
-    public function count()
+    public function count(): int
     {
         return count($this->items);
     }
@@ -434,7 +434,7 @@ class BaseCollection implements ArrayAccess, Countable, IteratorAggregate, JsonS
      * @access public
      * @return ArrayIterator
      */
-    public function getIterator()
+    public function getIterator(): ArrayIterator
     {
         return new ArrayIterator($this->items);
     }
@@ -444,7 +444,7 @@ class BaseCollection implements ArrayAccess, Countable, IteratorAggregate, JsonS
      * @access public
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }
